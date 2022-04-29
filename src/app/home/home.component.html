@@ -1,0 +1,85 @@
+
+<div class="container-fluid" style="margin: 5px;">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let joker of jokers; let i = index">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"> {{joker.setup}} </h5>
+                  <p class="card-text"> {{joker.punchline}} </p>
+                  <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="selectPlayList">Select PlayList:</label>
+                            <select class="form-control" id="selectPlayList" 
+                             (change)="selectPlayLists(joker,$event)">
+                             <option value="select">--Select--</option>
+                             <option *ngFor="let item of data" [value]="item.id">{{item.jokelist}}</option>
+                              <!-- <option value="Non funny joke">Non funny joke</option>
+                              <option value="Funny Joke">Funny Joke</option> -->
+                            </select>
+                          </div>
+                      </div>
+                      <div class="col-md-2" style="margin-top: 30px;">
+                        <button class="btn btn-primary" (click)="add()">Add</button>
+                    </div>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="playList">Name:</label>
+            <input type="text" id="playList" class="form-control" name="playList" [(ngModel)]="playList" placeholder="Enter the name of PlayList">
+        </div>
+        <button class="btn btn-primary" (click)="addPlayLists()">Submit</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="lists" *ngFor="let addplaylists of addplaylist; let i = index">
+            <p><span> {{i+1}}. </span> {{addplaylists}} </p>
+        </div>
+    </div>
+ </div>
+
+ <div class="row">
+     <div class="col-md-3">
+        <div class="form-group">
+            <label for="listName">Name of List:</label>
+            <input type="text" class="form-control" id="listName" [(ngModel)]="listName" name="listName">
+          </div>
+     </div>
+     <div class="col-md-3" style="margin-top: 30px;">
+         <button class="btn btn-primary" (click)="createPlayList()">Create Play List</button>
+     </div>
+ </div>
+
+ <div>
+        <div class="list" >
+            <h4 *ngIf="bestJokeHeader">Best Joke</h4>
+            <span *ngFor="let bestjokes of bestjoke; let i = index">
+               
+                <li> {{bestjokes.first}} </li>
+                <p> {{bestjokes.second}} </p>
+            </span>
+        </div>
+    <div class="list" >
+        <h4 *ngIf="funnyJokeHeader">Funny Joke</h4>
+        <span *ngFor="let funnyjokes of funnyjoke; let i = index">
+           
+            <li> {{funnyjokes.first}} </li>
+            <p> {{funnyjokes.second}} </p>
+        </span>  
+    </div>
+ </div>
+</div>
+
+
+
